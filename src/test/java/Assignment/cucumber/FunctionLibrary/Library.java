@@ -13,9 +13,8 @@ import Assignment.cucumber.testRunner.TestRunner;
 
 public class Library {
 	WebDriver driver = TestRunner.driver;
-	
-	public void waitForPageLoad(long wait) throws InterruptedException
-	{
+
+	public void waitForPageLoad(long wait) throws InterruptedException {
 		Thread.sleep(wait);
 	}
 
@@ -28,28 +27,25 @@ public class Library {
 		}
 		return result;
 	}
-	
-	public void switchToIframe(WebElement element)
-	{
+
+	public void switchToIframe(WebElement element) {
 		try {
 			driver.switchTo().frame(element);
 		} catch (Exception e) {
-			Reporter.log("Not able to switch to iFrame "+e.getMessage(),true);
+			Reporter.log("Not able to switch to iFrame " + e.getMessage(), true);
 		}
 	}
-	
-	public List<String> GetTextFromList(List<WebElement> elementList)
-	{
+
+	public List<String> GetTextFromList(List<WebElement> elementList) {
 		List<String> strList = new ArrayList<String>();
 		try {
 			String str = "";
-			for(WebElement element: elementList)
-			{
+			for (WebElement element : elementList) {
 				str = element.getText();
 				strList.add(str);
 			}
 		} catch (Exception e) {
-			Reporter.log("Not able to fetch text from WebElement list "+e.getMessage(),true);
+			Reporter.log("Not able to fetch text from WebElement list " + e.getMessage(), true);
 		}
 		return strList;
 	}
@@ -79,20 +75,19 @@ public class Library {
 			wait.pollingEvery(250, TimeUnit.MICROSECONDS);
 			wait.ignoring(NoSuchElementException.class);
 
-			//wait.wait(1);
+			// wait.wait(1);
 			// Thread.sleep(Constants.WAIT_TIME);
 		} catch (Exception e) {
 			Reporter.log("Not able to Wait --- " + e.getMessage(), true);
 		}
 	}
-	
-	public String GetText(WebElement element)
-	{
+
+	public String GetText(WebElement element) {
 		String text = null;
 		try {
 			text = element.getText();
 		} catch (Exception e) {
-			Reporter.log("Not able to fetch the text. "+e.getMessage(),true);
+			Reporter.log("Not able to fetch the text. " + e.getMessage(), true);
 		}
 		return text;
 	}
